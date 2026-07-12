@@ -102,9 +102,36 @@ function DashboardSection({
   );
 }
 
+type Certificate = {
+  cert_id: string;
+  event_name: string;
+  event_type: "workshop" | "hackathon";
+  cloudinary_url: string;
+  issued_at: string;
+};
+
 export default function DashboardClient({ initialEvents }: { initialEvents: SerializedEvent[] }) {
   const [statuses, setStatuses] = React.useState<Record<string, EventStatusData>>({});
   const [activeMeet, setActiveMeet] = React.useState<{ eventId: string; meetUrl: string } | null>(null);
+  const [certificates, setCertificates] = React.useState<Certificate[]>([]);
+  const [loadingCerts, setLoadingCerts] = React.useState(true);
+
+  React.useEffect(() => {
+    async function loadCertificates() {
+      try {
+        const res = await fetch("/api/user/certificates");
+        if (res.ok) {
+          const data = await res.json();
+          setCertificates(data.certificates || []);
+        }
+      } catch (err) {
+        console.error("Failed to load certificates", err);
+      } finally {
+        setLoadingCerts(false);
+      }
+    }
+    loadCertificates();
+  }, []);
 
   const handleJoin = React.useCallback((event: SerializedEvent) => {
     const meetUrl = getMeetUrl(event.roomName);
@@ -152,6 +179,67 @@ export default function DashboardClient({ initialEvents }: { initialEvents: Seri
         statuses={statuses}
         onJoin={handleJoin}
       />
+
+      {/* Certificates Section */}
+      {!loadingCerts && certificates.length > 0 && (
+        <section className="event-section mt-16">
+          <div className="mb-6 border-l-4 border-[#ffafd5] pl-6">
+            <h2 className="section-title">MY CERTIFICATES</h2>
+          </div>
+          <div className="event-grid">
+            {certificates.map((cert) => {
+              const accents = ["pink", "cyan", "yellow", "purple", "blue", "green"];
+              let sum = 0;
+              for (let i = 0; i < cert.cert_id.length; i++) {
+                sum += cert.cert_id.charCodeAt(i);
+              }
+              const accent = accents[sum % accents.length];
+              const colors = accentColors[accent];
+
+              const formattedDate = new Intl.DateTimeFormat("en-IN", {
+                dateStyle: "medium",
+              }).format(new Date(cert.issued_at));
+
+              return (
+                <article
+                  key={cert.cert_id}
+                  className="event-card transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    border: `2px solid ${colors.border}`,
+                    boxShadow: `0 0 20px ${colors.glow}`,
+                    background: "rgba(18, 19, 27, 0.92)",
+                  }}
+                >
+                  <div className="event-card__content">
+                    <div className="event-card__topline">
+                      <span className={`tag ${colors.tag}`}>{cert.event_type.toUpperCase()}</span>
+                      <span className="text-xs text-arcade-muted font-mono">{cert.cert_id}</span>
+                    </div>
+                    <h3 className={`event-card__title mt-3 font-bold ${colors.text}`}>
+                      {cert.event_name}
+                    </h3>
+                    <p className="mt-3 text-sm text-arcade-muted">
+                      Issued on {formattedDate}
+                    </p>
+                  </div>
+                  <div className="event-card__footer mt-6">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full font-black tracking-widest hover:text-white gap-2"
+                      style={{ borderColor: colors.border, color: colors.border }}
+                    >
+                      <a href={cert.cloudinary_url} target="_blank" rel="noopener noreferrer">
+                        VIEW CERTIFICATE <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {activeMeet ? (
         <MeetEmbed
