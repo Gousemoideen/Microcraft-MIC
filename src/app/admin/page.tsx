@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/auth";
 import { connectToDatabase } from "@/lib/mongodb";
 import { serializeEvent } from "@/lib/events";
 import Event from "@/models/Event";
+import User from "@/models/User";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,16 @@ export default async function AdminPage() {
 
   await connectToDatabase();
   const events = await Event.find({}).sort({ startTime: 1 });
+  const admins = await User.find({ role: "admin" }).sort({ name: 1 });
+
+  const serializedAdmins = admins.map((admin) => ({
+    _id: String(admin._id),
+    name: admin.name || "Administrator",
+    email: admin.email || "",
+    image: admin.image || "",
+    createdAt: admin.createdAt ? new Date(admin.createdAt).toISOString() : "",
+  }));
+
   const headerList = headers();
   const host = (await headerList).get("host");
   const protocol =  (await headerList).get("x-forwarded-proto") ?? "http";
@@ -37,9 +48,10 @@ export default async function AdminPage() {
   const totalHackathonCertificates = statsData?.totalHackathonCertificates ?? 0;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="mx-auto w-full">
       <AdminClient
         initialEvents={events.map(serializeEvent)}
+        initialAdmins={serializedAdmins}
         totalRegistrations={totalRegistrations}
         registrationsToday={registrationsToday}
         registrationsThisWeek={registrationsThisWeek}
@@ -54,3 +66,4 @@ export default async function AdminPage() {
     </div>
   );
 }
+
