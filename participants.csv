@@ -1,11 +1,6 @@
 name,email,event_name,event_code,event_type,date
-John Doe,john@example.com,Intro to Node,WS01,workshop,2026-07-01
-Jane Smith,jane@example.com,Intro to Node,WS01,workshop,2026-07-01
-John Doe,john@example.com,Intro to Node,WS01,workshop,2026-07-01
-Alice Tamil,alice@example.com,Advanced React,WS02,workshop,2026-07-02
-Bob Builder,bob@example.com,Hackathon Alpha,HA01,hackathon,2026/07/03
 Charlie Brown,charlie@example.com,,WS03,workshop,2026-07-04
 ,missing@example.com,Intro to Node,WS01,workshop,2026-07-01
-David Miller,david@example.com,Intro to Node,WS01,workshop,invalid-date
+Gowreesh,vt.gowreesh43@gmail.com,Intro to Node,WS01,workshop,2026-07-23
 Elsa Frozen,elsa@example.com,Advanced React,WS02,workshop,2026-07-02
 Karthik Vignesh,karthik@example.com,Hackathon Alpha,HA01,hackathon,2026-07-05
