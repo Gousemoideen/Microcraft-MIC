@@ -1,0 +1,6 @@
+name,email,event_name,event_code,event_type,date,cert_id
+John Doe,john@example.com,Intro to Node,WS01,workshop,2026-07-01,MC26-WS01-0001
+Jane Smith,jane@example.com,Intro to Node,WS01,workshop,2026-07-01,MC26-WS01-0002
+Alice Tamil,alice@example.com,Advanced React,WS02,workshop,2026-07-02,MC26-WS02-0001
+Elsa Frozen,elsa@example.com,Advanced React,WS02,workshop,2026-07-02,MC26-WS02-0002
+Karthik Vignesh,karthik@example.com,Hackathon Alpha,HA01,hackathon,2026-07-05,MC26-HA01-0001
