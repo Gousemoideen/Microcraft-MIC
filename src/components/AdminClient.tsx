@@ -30,6 +30,10 @@ export function AdminClient({
   totalUsers,
   totalHackathonRegistrations,
   registrationCounts,
+  totalCertificates = 0,
+  uniqueCertificateRecipients = 0,
+  totalWorkshopCertificates = 0,
+  totalHackathonCertificates = 0,
 }: {
   initialEvents: SerializedEvent[];
   totalRegistrations: number;
@@ -38,6 +42,10 @@ export function AdminClient({
   totalUsers: number;
   totalHackathonRegistrations: number;
   registrationCounts: Record<string, number>;
+  totalCertificates?: number;
+  uniqueCertificateRecipients?: number;
+  totalWorkshopCertificates?: number;
+  totalHackathonCertificates?: number;
 }) {
   const [events, setEvents] = React.useState(initialEvents);
   const [editing, setEditing] = React.useState<SerializedEvent | null>(null);
@@ -210,6 +218,41 @@ export function AdminClient({
             <CardHeader>
               <CardDescription>Total hackathon registrations</CardDescription>
               <CardTitle className="text-3xl">{totalHackathonRegistrations}</CardTitle>
+            </CardHeader>
+          </Card>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold tracking-normal mt-4">Certificate System</h2>
+          <p className="text-sm text-muted-foreground mt-1">Analytics for Microcraft certificates.</p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardDescription>Total certificates issued</CardDescription>
+              <CardTitle className="text-3xl">{totalCertificates}</CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardDescription>Unique certificate recipients</CardDescription>
+              <CardTitle className="text-3xl">{uniqueCertificateRecipients}</CardTitle>
+            </CardHeader>
+          </Card>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardDescription>Workshop certificates</CardDescription>
+              <CardTitle className="text-3xl">{totalWorkshopCertificates}</CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardDescription>Hackathon certificates</CardDescription>
+              <CardTitle className="text-3xl">{totalHackathonCertificates}</CardTitle>
             </CardHeader>
           </Card>
         </div>
