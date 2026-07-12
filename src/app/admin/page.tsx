@@ -22,12 +22,19 @@ export default async function AdminPage() {
   const baseUrl = host ? `${protocol}://${host}` : "";
   const statsResponse = await fetch(`${baseUrl}/api/stats`, { cache: "no-store" });
   const statsData = statsResponse.ok ? await statsResponse.json() : null;
+  
   const totalRegistrations = statsData?.totalRegistrations ?? 0;
   const registrationsToday = statsData?.registrationsToday ?? 0;
   const registrationsThisWeek = statsData?.registrationsThisWeek ?? 0;
   const totalUsers = statsData?.totalUsers ?? 0;
   const totalHackathonRegistrations = statsData?.totalHackathonRegistrations ?? 0;
   const registrationCounts = statsData?.registrationCounts ?? {};
+
+  // Certificate statistics
+  const totalCertificates = statsData?.totalCertificates ?? 0;
+  const uniqueCertificateRecipients = statsData?.uniqueCertificateRecipients ?? 0;
+  const totalWorkshopCertificates = statsData?.totalWorkshopCertificates ?? 0;
+  const totalHackathonCertificates = statsData?.totalHackathonCertificates ?? 0;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -39,6 +46,10 @@ export default async function AdminPage() {
         totalUsers={totalUsers}
         totalHackathonRegistrations={totalHackathonRegistrations}
         registrationCounts={registrationCounts}
+        totalCertificates={totalCertificates}
+        uniqueCertificateRecipients={uniqueCertificateRecipients}
+        totalWorkshopCertificates={totalWorkshopCertificates}
+        totalHackathonCertificates={totalHackathonCertificates}
       />
     </div>
   );
