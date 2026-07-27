@@ -60,6 +60,35 @@ export default async function LandingPage() {
       {/* Floating Retro Icons (Decorative) */}
       <div className="main-shell flex flex-col items-center justify-center pt-20">
         <div className="hero animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          {/* Winners CTA Banner */}
+          <Link href="/winners" className="group block w-full max-w-4xl mx-auto mb-8 cursor-pointer">
+            <div className="relative overflow-hidden rounded-xl border-2 border-yellow-400/80 bg-black/85 px-4 py-3 sm:py-3.5 shadow-[0_0_24px_rgba(250,204,21,0.35)] backdrop-blur-md transition-all duration-300 group-hover:scale-[1.015] group-hover:border-yellow-300 group-hover:shadow-[0_0_35px_rgba(250,204,21,0.5)]">
+              {/* Corner accent pixels */}
+              <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-yellow-400" />
+              <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-yellow-400" />
+              <div className="absolute bottom-1 left-1 w-1.5 h-1.5 bg-yellow-400" />
+              <div className="absolute bottom-1 right-1 w-1.5 h-1.5 bg-yellow-400" />
+
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left px-2">
+                <div className="flex items-center justify-center sm:justify-start gap-3 min-w-0 flex-1">
+                  <span className="text-xl sm:text-2xl animate-bounce shrink-0">🏆</span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-yellow-400 font-press-start">
+                      HALL OF FAME
+                    </p>
+                    <p className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-white font-press-start mt-0.5">
+                      CLICK HERE TO VIEW THE WINNERS
+                    </p>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-2 rounded-lg bg-yellow-400/20 border border-yellow-400/60 px-4 py-2 text-yellow-300 text-[10px] sm:text-xs font-bold font-press-start tracking-wider group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                  <span className="whitespace-nowrap">VIEW WINNERS</span>
+                  <span className="text-sm">→</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
           <div className="hero-logo">
             <Image 
               src="/mic-logo.png" 

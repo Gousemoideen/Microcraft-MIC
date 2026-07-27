@@ -71,6 +71,9 @@ export function Navbar() {
           <Link href={getHref("#schedule")} className={cn("hidden rounded-md px-3 py-2 text-sm font-medium hover:bg-accent sm:inline-flex")}>
             Schedule
           </Link>
+          <Link href="/winners" className={cn("hidden rounded-md px-3 py-2 text-sm font-medium hover:bg-accent sm:inline-flex")}>
+            Winners
+          </Link>
           <Link href={getHref("#organizers")} className={cn("hidden rounded-md px-3 py-2 text-sm font-medium hover:bg-accent sm:inline-flex")}>
             Organizers
           </Link>
@@ -122,6 +125,9 @@ export function Navbar() {
           )}
           <Link href={getHref("#schedule")} className="rounded-md px-3 py-3 text-sm font-medium hover:bg-white/10 border-b border-white/5" onClick={closeMenu}>
             Schedule
+          </Link>
+          <Link href="/winners" className="rounded-md px-3 py-3 text-sm font-medium hover:bg-white/10 border-b border-white/5" onClick={closeMenu}>
+            Winners
           </Link>
           <Link href={getHref("#organizers")} className="rounded-md px-3 py-3 text-sm font-medium hover:bg-white/10 border-b border-white/5" onClick={closeMenu}>
             Organizers

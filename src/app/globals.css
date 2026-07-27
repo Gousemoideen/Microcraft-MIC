@@ -947,3 +947,56 @@ body {
   animation: mlsa-glow-pulse 2.5s ease-in-out infinite !important;
 }
 
+/* Retro Arcade Hall of Fame Animations & Utilities */
+@keyframes float-star {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.animate-float-star {
+  animation: float-star 2.5s ease-in-out infinite;
+}
+
+.font-press-start {
+  font-family: var(--font-press-start), cursive, monospace;
+}
+
+.crt-bg {
+  background-color: #06070c;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.crt-scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.45) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+@keyframes arcade-marquee-fast {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-arcade-ticker {
+  display: flex;
+  width: max-content;
+  animation: arcade-marquee-fast 20s linear infinite;
+}
+
+
