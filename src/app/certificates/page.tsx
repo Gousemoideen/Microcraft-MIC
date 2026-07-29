@@ -125,12 +125,12 @@ export default function CertificatesPage() {
         {/* Page Title */}
         <section className="hero mb-10 text-center sm:text-left">
           <h1 className="text-4xl font-black tracking-widest text-[#ffafd5]">CERTIFICATE GATEWAY</h1>
-          <p className="mt-2 text-arcade-muted">Verify earned credentials and manage your workshop & hackathon certificates.</p>
+          {/* <p className="mt-2 text-arcade-muted">Verify earned credentials and manage your workshop & hackathon certificates.</p> */}
           <div className="hero-rule mt-6" />
         </section>
 
         {/* Improved Tab Controls (Matching Admin Tabs UI) */}
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <div className="bg-black/50 border border-white/10 p-1 flex justify-start gap-1 overflow-x-auto rounded-lg backdrop-blur-sm">
             <button
               onClick={() => setActiveTab("verify")}
@@ -153,12 +153,12 @@ export default function CertificatesPage() {
               My Certificates
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* TAB 1: PUBLIC VERIFICATION LOOKUP */}
         {activeTab === "verify" && (
           <div className="space-y-8 animate-in fade-in duration-300">
-            <Card className="bg-black/45 border-white/10 backdrop-blur-sm p-6 max-w-2xl mx-auto">
+            {/* <Card className="bg-black/45 border-white/10 backdrop-blur-sm p-6 max-w-2xl mx-auto">
               <CardHeader className="p-0 mb-6 text-center">
                 <CardTitle className="text-xs font-black uppercase tracking-widest text-white flex items-center justify-center gap-2">
                   <Award className="h-4 w-4 text-[#ffafd5]" />
@@ -184,7 +184,7 @@ export default function CertificatesPage() {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Results UI */}
             {searchResult.loading && (
