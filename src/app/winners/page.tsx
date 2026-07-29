@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { WINNERS_DATA } from "@/constants/winners-data";
 import { EventSection } from "@/components/winners/EventSection";
 import { CRTOverlay } from "@/components/winners/CRTOverlay";
+import { WinnersSponsors } from "@/components/winners/WinnersSponsors";
 
 export const metadata: Metadata = {
   title: "Hall of Fame - Microsoft Innovations Club",
@@ -39,6 +40,9 @@ export default function WinnersPage() {
           <EventSection key={event.id} event={event} />
         ))}
       </div>
+
+      {/* Official Event Sponsors Showcase */}
+      <WinnersSponsors />
     </div>
   );
 }

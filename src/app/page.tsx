@@ -14,6 +14,7 @@ import Registration from "@/models/Registration";
 import { ScheduleClient } from "@/components/ScheduleClient";
 import { isVitStudentEmail } from "@/lib/profile";
 import { HomeTour } from "@/components/HomeTour";
+import { CertificateInstructionVideo } from "@/components/CertificateInstructionVideo";
 
 export const dynamic = "force-dynamic";
 
@@ -410,6 +411,9 @@ export default async function LandingPage() {
                 Certificate image unavailable. Update the certificate URL in this section when ready.
               </div>
             )}
+
+            {/* Certificate Registration & Instruction Video Guide */}
+            <CertificateInstructionVideo className="mt-8" />
           </div>
         </section>
 

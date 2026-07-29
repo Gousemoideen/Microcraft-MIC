@@ -6,6 +6,7 @@ import { Award, Search, ShieldCheck, AlertCircle, ExternalLink, Lock, RefreshCw 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CertificateInstructionVideo } from "@/components/CertificateInstructionVideo";
 
 type Certificate = {
   cert_id: string;
@@ -370,6 +371,9 @@ export default function CertificatesPage() {
             )}
           </div>
         )}
+
+        {/* Certificate Registration Instruction Video Guide */}
+        <CertificateInstructionVideo />
       </main>
     </div>
   );
